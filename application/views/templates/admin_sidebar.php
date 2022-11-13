@@ -58,6 +58,11 @@
             <i class="fas fa-fw fa-user"></i>
             <span>Akun Dosen</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/all_kehadiran_dosen') ?>">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Kehadiran semua dosen</span></a>
+    </li>
     <?php endif; ?>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/kehadiran') ?>">

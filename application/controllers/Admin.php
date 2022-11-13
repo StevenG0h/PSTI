@@ -700,7 +700,34 @@ class Admin extends CI_Controller
 
     public function kehadiran(){
         $data = $this->kehadiran->get_by_dosen($this->session->userdata('id'));
-        var_dump($data);
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/admin_sidebar', $data);
+        $this->load->view('templates/admin_topbar', $data);
+        $this->load->view('admin/kehadiran', $data);
+        $this->load->view('templates/admin_footer', $data);
+    }
+    public function all_kehadiran_dosen(){
+        $data['kehadirans'] = $this->kehadiran->get_all();
+        $data['judul'] = "kehadiran semua dosen";
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/admin_sidebar', $data);
+        $this->load->view('templates/admin_topbar', $data);
+        $this->load->view('admin/all_kehadiran_dosen', $data);
+        $this->load->view('templates/admin_footer', $data);
+    }
+
+    public function hadir(){
+        $data['id_dosen'] = $this->input->post('id_dosen');
+        $data['keterangan'] = $this->input->post('keterangan');
+        $this->kehadiran->update_hadir($data);
+        redirect('admin/kehadiran');
+    }
+
+    public function tidakHadir(){
+        $data['id_dosen'] = $this->input->post('id_dosen');
+        $data['keterangan'] = $this->input->post('keterangan');
+        $this->kehadiran->update_tidak_hadir($data);
+        redirect('admin/kehadiran');
     }
 
 }
