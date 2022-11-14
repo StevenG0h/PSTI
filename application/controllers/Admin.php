@@ -729,5 +729,18 @@ class Admin extends CI_Controller
         $this->kehadiran->update_tidak_hadir($data);
         redirect('admin/kehadiran');
     }
+    public function all_hadir(){
+        $data['id_dosen'] = $this->input->post('id_dosen');
+        $data['keterangan'] = $this->input->post('keterangan');
+        $this->kehadiran->update_hadir($data);
+        redirect('admin/all_kehadiran_dosen');
+    }
+
+    public function all_tidakHadir(){
+        $data['id_dosen'] = $this->input->post('id_dosen');
+        $data['keterangan'] = $this->input->post('keterangan');
+        $this->kehadiran->update_tidak_hadir($data);
+        redirect('admin/all_kehadiran_dosen ');
+    }
 
 }
