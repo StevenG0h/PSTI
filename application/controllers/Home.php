@@ -59,7 +59,7 @@ class Home extends CI_Controller
     {
 
         $data['profil_lulusan'] = $this->KurikulumModel->get_all_pl_by_kur($id);
-        $data['capaian_pembelajaran'] = $this->KurikulumModel->get_all_cp_by_kur();
+        $data['capaian_pembelajaran'] = $this->KurikulumModel->get_all_cp_by_kur($id);
         $data['kurikulum_aktif'] = $this->KurikulumModel->get_kurikulum_by_id($id);
         $data['semester'] = $this->KurikulumModel->get_semester_by_kurikulum_aktif();
         $data['kurikulum_tidak_aktif'] = $this->KurikulumModel->get_kurikulum_tidak_aktif();

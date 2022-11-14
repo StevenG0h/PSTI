@@ -115,7 +115,7 @@ class KurikulumModel extends CI_Model
     }
     public function get_all_cp_by_kur($id)
     {
-        return $this->db->query("SELECT * FROM capaian_pembelajaran where ")->result();
+        return $this->db->query("SELECT * FROM capaian_pembelajaran where kode_kurikulum = $id")->result();
     }
 
     public function tambah_capaian_pembelajaran($data)
