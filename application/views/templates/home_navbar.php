@@ -43,11 +43,11 @@
                                 <li class="nav-item">
                                     <a href="<?= base_url('home/profil_prodi'); ?>" class="nav-link">Profil</a>
                                 </li>
-
+                                <?php foreach($kurikulum as $value): ?>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('home/kurikulum'); ?>" class="nav-link">Kurikulum</a>
+                                    <a href="<?= base_url('home/kurikulum/'.$value->id_kurikulum); ?>" class="nav-link"><?= $value->kurikulum ?></a>
                                 </li>
-
+                                <?php endforeach; ?>
                                 <li class="nav-item">
                                     <a href="<?= base_url('home/prestasi'); ?>" class="nav-link">Prestasi</a>
                                 </li>

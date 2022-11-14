@@ -42,51 +42,57 @@
                                 <td><?= $value->nip_dosen ?></td>
                                 <td><?= $value->status ?></td>
                                 <td><?= $value->keterangan ?></td>
-                                <!-- <td>
-                                    <a href="" class="btn btn-sm btn-success" data-toggle="modal" data-target="#ubahAkunDosenModal<?= $value->id_login_dosen ?>"><i class="fas fa-fw fa-pen"></i></a>
-                                    <a href="<?= base_url('admin/hapus_akun/' . $value->id_login_dosen) ?>"><button class="btn btn-sm btn-danger"><i class="fas fa-fw fa-trash"></i></button></a>
+                                <td>
+                                    <a href="" class="btn btn-sm btn-success" data-toggle="modal" data-target="#ubahAkunDosenModal<?= $value->id_dosen ?>"><i class="fas fa-fw fa-pen"></i></a>
 
-                                </td> -->
+                                </td>
                             </tr>
                             <!-- Ubah Dosen Modal-->
-                            <!-- <div class="modal fade" id="ubahAkunDosenModal<?= $value->id_login_dosen ?>" tabindex="-1" role="dialog" aria-labelledby="ubahAkunDosenModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="ubahAkunDosenModal<?= $value->id_dosen ?>" tabindex="-1" role="dialog" aria-labelledby="ubahAkunDosenModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="ubahAkunDosenModalLabel">Ubah Akun Dosen</h5>
+                                            <h5 class="modal-title" id="ubahAkunDosenModalLabel">Ubah Kehadiran</h5>
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
-                                        </div> -->
-                                        <!-- <form action="<?= base_url('admin/ubah_akun') ?>" method="POST" enctype="multipart/form-data">
+                                        </div>
+                                        <form action="<?= base_url('admin/all_hadir') ?>" method="POST" enctype="multipart/form-data">
                                             <div class="modal-body">
+                                                <h5>Hadir</h5>
                                                 <div class="form-group mb-3">
-                                                    <input type="hidden" name="id_login_dosen" value="<?= $value->id_login_dosen ?>">
-                                                    <select class="form-control" name="id_dosen" id="" required>
-                                                        <option value="<?=$value->id_dosen?>"><?=$value->nama_dosen?></option>
-                                                        <?php foreach ($dosen as $key => $value2) { ?>
-                                                            <option value="<?= $value2->id_dosen ?>"><?= $value2->nama_dosen ?></option>
-                                                        <?php } ?>
-                                                    </select>
+                                                    <input type="hidden" name="id_dosen" value="<?= $value->id_dosen ?>">
                                                 </div>
                                                 <div class="form-group mb-3">
-                                                    <input type="text" class="form-control" name="password" placeholder="Password" value="<?= $value->password ?>">
+                                                    <input type="text" class="form-control" name="keterangan" placeholder="Keterangan" value="">
                                                 </div>
                                                 <div class="form-group mb-3">
-                                                    <select class="form-control" name="level" id="" required>
-                                                        <option value="<?=$value->level?>"><?=$level?></option>
-                                                        <option value="<?=$level_value?>"><?=$level_name?></option>
-                                                    </select>
+
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                                 <button type="submit" class="btn btn-sm btn-primary">Ubah</button>
                                             </div>
-                                        </form> -->
-                                    <!-- </div>
+                                        </form>
+                                        <form action="<?= base_url('admin/all_tidakHadir') ?>" method="POST" enctype="multipart/form-data">
+                                            <div class="modal-body">
+                                            <h5>Tidak Hadir</h5>
+                                            <input type="hidden" name="id_dosen" value="<?= $value->id_dosen ?>">
+                                                <div class="form-group mb-3">
+                                                    <input type="text" class="form-control" name="keterangan" placeholder="Keterangan..." value="">
+                                                </div>
+                                                <div class="form-group mb-3">
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-sm btn-primary">Ubah</button>
+                                            </div>
+                                        </form>
                                 </div>
-                            </div> -->
+                            </div>
                         <?php } ?>
                     </tbody>
                 </table>

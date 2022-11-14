@@ -19,10 +19,10 @@ class Home extends CI_Controller
         $data['artikel'] = $this->ArtikelModel->get_new_artikel();
         $data['slider'] = $this->ArtikelModel->get_gambar_slider();
         // die(var_dump(uniqid()));
-        
+        $data['kurikulum'] = $this->KurikulumModel->get_all_kurikulum_nama_id();
         $this->load->view('templates/home_header');
-        $this->load->view('templates/home_navbar');
-        $this->load->view('home/index', $data);
+        $this->load->view('templates/home_navbar',$data);
+        $this->load->view('home/index');
         $this->load->view('templates/home_footer');
     }
 
@@ -55,17 +55,19 @@ class Home extends CI_Controller
         $this->load->view('templates/home_footer');
     }
 
-    public function kurikulum()
+    public function kurikulum($id)
     {
-        $data['profil_lulusan'] = $this->KurikulumModel->get_all_pl();
-        $data['capaian_pembelajaran'] = $this->KurikulumModel->get_all_cp();
-        $data['kurikulum_aktif'] = $this->KurikulumModel->get_kurikulum_aktif();
+
+        $data['profil_lulusan'] = $this->KurikulumModel->get_all_pl_by_kur($id);
+        $data['capaian_pembelajaran'] = $this->KurikulumModel->get_all_cp_by_kur();
+        $data['kurikulum_aktif'] = $this->KurikulumModel->get_kurikulum_by_id($id);
         $data['semester'] = $this->KurikulumModel->get_semester_by_kurikulum_aktif();
         $data['kurikulum_tidak_aktif'] = $this->KurikulumModel->get_kurikulum_tidak_aktif();
 
+        $data['kurikulum'] = $this->KurikulumModel->get_all_kurikulum_nama_id();
         $this->load->view('templates/home_header');
-        $this->load->view('templates/home_navbar');
-        $this->load->view('home/kurikulum', $data);
+        $this->load->view('templates/home_navbar',$data);
+        $this->load->view('home/kurikulum');
         $this->load->view('templates/home_footer');
     }
 
