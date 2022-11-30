@@ -14,7 +14,7 @@
     }
 </style>
 
-<div class="container">
+<div class="container-lg">
     <div class="row">
         <div class="col-lg-12 col-md-6 mt-5 mb-5" style="font-family: Open Sans, sans-serif;">
             <p class="text-justify">

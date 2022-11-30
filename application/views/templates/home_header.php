@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?= base_url('front-end/') ?>assets/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- Owl Theme Default CSS -->
     <link rel="stylesheet" href="<?= base_url('front-end/') ?>assets/css/owl.theme.default.min.css">
     <!-- Owl Carousel CSS -->
@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="<?= base_url('front-end/') ?>assets/css/style.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="<?= base_url('front-end/') ?>assets/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?= base_url('front-end/') ?>assets/css/custom.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="<?= base_url('front-end/') ?>assets/img/favicon-2.ico">

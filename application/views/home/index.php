@@ -47,7 +47,7 @@
 
 <!-- Start About Area Sambutan -->
 <section class="about-area-two bg-color ptb-100">
-    <div class="container">
+    <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="about-content">
@@ -63,10 +63,10 @@
 
 <!-- Start What We Do Area -->
 <section class="what-we-do-area pt-100 pb-70">
-    <div class="container">
+    <div class="container-lg">
         <div class="row">
             <div class="col-lg-4 col-sm-6">
-                <div class="what-we-do-item">
+                <div class="what-we-do-item h-100 justify-content-between">
                     <h3>Pilihan Program Pendidikan</h3>
                     <p>Temukan program pendidikan dan bidang studi yang sesuai dengan minat belajar Anda</p>
                     <a href="https://pcr.ac.id"><button class="btn btn-dark">Informasi selengkapnya</button></a>
@@ -74,7 +74,7 @@
             </div>
 
             <div class="col-lg-4 col-sm-6">
-                <div class="what-we-do-item">
+                <div class="what-we-do-item h-100 justify-content-between">
                     <h3>Penerimaan Mahasiswa Baru</h3>
                     <p>Sudah punya pilihan program pendidikan? Daftarkan diri Anda sekarang</p>
                     <a href="https://pmb.pcr.ac.id"><button class="btn btn-dark">Informasi selengkapnya</button></a>
@@ -82,7 +82,7 @@
             </div>
 
             <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
-                <div class="what-we-do-item">
+                <div class="what-we-do-item h-100 justify-content-between">
                     <h3>Informasi Beasiswa</h3>
                     <p>Informasi tentang berbagai skema beasiswa yang ditawarkan untuk mahasiswa baru</p>
                     <a href="mailto:nabila@pcr.ac.id"><button class="btn btn-dark">Informasi selengkapnya</button></a>
@@ -95,7 +95,7 @@
 
 <!-- Start About Area Visi Misi -->
 <section class="about-area-two bg-color ptb-100">
-    <div class="container">
+    <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="about-content text-center">
@@ -111,7 +111,7 @@
 
 <!-- Start About Area Visi Misi -->
 <section class="about-area-two ptb-100">
-    <div class="container">
+    <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="about-content text-center">
@@ -120,7 +120,7 @@
                         <?php foreach ($artikel as $key => $value) { ?>
                             <div class="col-lg-4 col-md-6">
                                 <div class="single-blog">
-                                    <a href="<?= base_url('home/berita_detail/' . $value->id_artikel) ?>">
+                                    <a class="blog-image" href="<?= base_url('home/berita_detail/' . $value->id_artikel) ?>">
                                         <img src="<?= base_url('uploads/artikel/' . $value->gambar_artikel) ?>" alt="Image">
                                     </a>
 
@@ -138,7 +138,7 @@
                                         </ul>
 
                                         <a href="<?= base_url('home/berita_detail/' . $value->id_artikel) ?>">
-                                            <h3><?= $value->judul_artikel ?></h3>
+                                            <h3><?= substr(strip_tags($value->judul_artikel), 0, 64) ?>...</h3>
                                         </a>
 
                                         <p><?= substr(strip_tags($value->isi_artikel), 0, 200) ?>...</p>

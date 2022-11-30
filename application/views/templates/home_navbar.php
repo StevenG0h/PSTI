@@ -1,7 +1,7 @@
 <!-- Start Navbar Area -->
 <div class="navbar-area">
     <!-- Menu For Mobile Device -->
-    <div class="mobile-nav">
+    <div class="container-lg mobile-nav">
         <a href="<?= base_url('home/index') ?>" style="max-width: 200px;" class="logo">
             <img src="<?= base_url('front-end/') ?>assets/img/logo-3.png" alt="Logo">
             <img src="<?= base_url('front-end/') ?>assets/img/logo-2.png" alt="Logo">
@@ -11,6 +11,7 @@
     <!-- Menu For Desktop Device -->
     <div class="main-nav">
         <div class="container-fluid">
+            <div class="container-lg ">
             <nav class="navbar navbar-expand-md">
                 <a class="navbar-brand" href="<?= base_url('home/index') ?>">
                     <img src="<?= base_url('front-end/') ?>assets/img/logo-3.png" alt="Logo">
@@ -19,8 +20,8 @@
                     <img src="<?= base_url('front-end/') ?>assets/img/logo-2.png" alt="Logo">
                 </a>
 
-                <div class="collapse navbar-collapse mean-menu">
-                    <ul class="navbar-nav m-auto">
+                <div class="collapse navbar-collapse justify-content-end">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a href="<?= base_url('home/index') ?>" class="nav-link">
                                 Beranda
@@ -41,13 +42,23 @@
 
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    <a href="<?= base_url('home/profil_prodi'); ?>" class="nav-link">Profil</a>
+                                    <a href="<?= base_url('home/profil_prodi'); ?>" class="nav-link">Visi Misi</a>
                                 </li>
+                                <li class="nav-item">
+                                <a href="#">
+                                    kurikulum
+                                    <i class="bx bx-chevron-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
                                 <?php foreach($kurikulum as $value): ?>
                                 <li class="nav-item">
+                                    
                                     <a href="<?= base_url('home/kurikulum/'.$value->id_kurikulum); ?>" class="nav-link"><?= $value->kurikulum ?></a>
                                 </li>
                                 <?php endforeach; ?>
+                                </ul>
+                                </li>
+                                
                                 <li class="nav-item">
                                     <a href="<?= base_url('home/prestasi'); ?>" class="nav-link">Prestasi</a>
                                 </li>
@@ -83,6 +94,8 @@
                     </ul>
                 </div>
             </nav>
+            </div>
+            
         </div>
     </div>
 </div>

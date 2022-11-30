@@ -25,7 +25,11 @@ class ArtikelModel extends CI_Model
 
     public function get_all_prestasi()
     {
-        return $this->db->query("SELECT * FROM artikel WHERE kategori_artikel = 'Prestasi' ORDER BY tanggal_artikel DESC")->result();
+        return $this->db->query("SELECT * FROM artikel WHERE kategori_artikel = 'Prestasi' ORDER BY tanggal_artikel DESC")->result_array();
+    }
+    public function get_all_artikel()
+    {
+        return $this->db->query("SELECT * FROM artikel WHERE kategori_artikel = 'Berita' ORDER BY tanggal_artikel DESC")->result_array();
     }
 
     public function get_by_id($id)

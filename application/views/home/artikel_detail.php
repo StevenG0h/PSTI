@@ -10,9 +10,9 @@
 
 <!-- Start Blog Details Area -->
 <div class="blog-details-area ptb-100">
-    <div class="container">
+    <div class="container-lg">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-9">
                 <div class="blog-details-wrap">
                     <div class="blog-top-content-wrap">
                         <img src="<?= base_url('uploads/artikel/' . $artikel_detail->gambar_artikel) ?>" alt="Image">
@@ -61,6 +61,63 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-3 col-12">
+			<div class="accordion" id="accordionExample">
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="headingOne">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse"
+							data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							Berita
+						</button>
+					</h2>
+					<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+						data-bs-parent="#accordionExample">
+						<ul class="list-group">
+                            <?php foreach($artikel as $a): ?>
+                            <a href="<?= base_url("home/berita_detail/".$a['id_artikel']) ?>">
+                                <li class="list-group-item"><?= $a['judul_artikel'] ?></li>
+                            </a>
+                            <?php endforeach; ?>
+						</ul>
+					</div>
+				</div>
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="headingTwo">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+							data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							Prestasi
+						</button>
+					</h2>
+					<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+						data-bs-parent="#accordionExample">
+						<ul class="list-group">
+                            <?php foreach($prestasi as $p): ?>
+                            <a href="<?= base_url("home/berita_detail/".$p['id_artikel']) ?>">
+                                <li class="list-group-item"><?= $p['judul_artikel'] ?></li>
+                            </a>
+                            <?php endforeach; ?>
+						</ul>
+					</div>
+				</div>
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="headingThree">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+							data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							Kurikulum
+						</button>
+					</h2>
+					<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+						data-bs-parent="#accordionExample">
+						<ul class="list-group">
+                            <?php foreach($all_kurikulum as $kur): ?>
+                            <a href="<?= base_url("home/kurikulum/".$kur['id_kurikulum']) ?>">
+                                <li class="list-group-item"><?= $kur['kurikulum'] ?></li>
+                            </a>
+                            <?php endforeach; ?>
+						</ul>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 </div>

@@ -7,7 +7,7 @@ class KurikulumModel extends CI_Model
 
     public function get_all()
     {
-        return $this->db->query("SELECT * FROM kurikulum")->result();
+        return $this->db->query("SELECT * FROM kurikulum")->result_array();
     }
     public function get_all_kurikulum_nama_id()
     {
