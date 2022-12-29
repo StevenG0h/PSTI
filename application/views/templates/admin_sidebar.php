@@ -69,6 +69,16 @@
             <i class="fas fa-fw fa-user"></i>
             <span>Kehadiran </span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/ubah_password') ?>">
+            <i class="fas fa-fw fa-lock"></i>
+            <span>Ubah Password</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/ubah_profil') ?>">
+            <i class="fas fa-fw fa-edit"></i>
+            <span>Ubah Profil</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

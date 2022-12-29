@@ -7,7 +7,7 @@ class KurikulumModel extends CI_Model
 
     public function get_all()
     {
-        return $this->db->query("SELECT * FROM kurikulum")->result_array();
+        return $this->db->query("SELECT * FROM kurikulum")->result();
     }
     public function get_all_kurikulum_nama_id()
     {
@@ -77,7 +77,7 @@ class KurikulumModel extends CI_Model
 
     public function get_semester_by_id($id_semester)
     {
-        return $this->db->query("SELECT * FROM semester WHERE id_semester = $id_semester")->row();
+        return $this->db->query("SELECT * FROM semester WHERE id_kurikulum = $id_semester")->result();
     }
 
     public function hapus_semester($id)
@@ -89,9 +89,18 @@ class KurikulumModel extends CI_Model
     {
         return $this->db->query("SELECT * FROM profil_lulusan where kode_kurikulum = $id")->result();
     }
+    public function get_all_active_pl()
+    {
+        return $this->db->query("SELECT * FROM profil_lulusan where tampilkan = 1")->result();
+    }
     public function get_all_pl()
     {
         return $this->db->query("SELECT * FROM profil_lulusan")->result();
+    }
+
+    public function get_pl_by_id($id)
+    {
+        return $this->db->query("SELECT * FROM profil_lulusan where id_profil_lulusan = $id")->result();
     }
 
     public function tambah_profil_lulusan($data)

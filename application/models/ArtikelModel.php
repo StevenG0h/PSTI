@@ -13,19 +13,33 @@ class ArtikelModel extends CI_Model
         return $this->db->query("SELECT * FROM artikel ORDER BY tanggal_artikel DESC")->result();
     }
 
-    public function get_new_artikel()
+    public function get_new_berita()
     {
-        return $this->db->query("SELECT * FROM artikel ORDER BY tanggal_artikel DESC limit 3")->result();
+        return $this->db->query("SELECT * FROM artikel WHERE kategori_artikel='Berita' ORDER BY tanggal_artikel DESC limit 3")->result();
+    }
+    public function get_new_prestasi()
+    {
+        return $this->db->query("SELECT * FROM artikel WHERE kategori_artikel='Prestasi' ORDER BY tanggal_artikel DESC limit 3")->result();
+    }
+    
+    public function get_all_artikel_by_year($year)
+    {
+        return $this->db->query("SELECT * FROM artikel WHERE kategori_artikel = 'Berita' && YEAR(tanggal_artikel) = $year ORDER BY tanggal_artikel DESC")->result_array();
     }
 
     public function get_gambar_slider()
     {
-        return $this->db->query("SELECT gambar_artikel FROM artikel ORDER BY tanggal_artikel DESC LIMIT 3")->result();
+        return $this->db->query("SELECT gambar_artikel FROM artikel ORDER BY tanggal_artikel DESC LIMIT 5")->result();
     }
 
     public function get_all_prestasi()
     {
         return $this->db->query("SELECT * FROM artikel WHERE kategori_artikel = 'Prestasi' ORDER BY tanggal_artikel DESC")->result_array();
+    }
+
+    public function get_all_prestasi_by_year($year)
+    {
+        return $this->db->query("SELECT * FROM artikel WHERE kategori_artikel = 'Prestasi' && YEAR(tanggal_artikel) = $year ORDER BY tanggal_artikel DESC")->result_array();
     }
     public function get_all_artikel()
     {

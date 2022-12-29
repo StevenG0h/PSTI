@@ -47,6 +47,15 @@ class KehadiranDosenModel extends CI_Model
     {
         $this->db->query("UPDATE kehadiran_dosen SET status = 'Hadir', keterangan = '$data[keterangan]', last_updated = '$this->now' WHERE id_dosen = '$data[id_dosen]'");
     }
+    public function update_hadir_status($data)
+    {
+        var_dump($this->db->query("UPDATE kehadiran_dosen SET status = '$data[status]', last_updated = '$this->now' WHERE id_dosen = '$data[id_dosen]'"));
+        
+    }
+    public function update_hadir_keterangan($data)
+    {
+        $this->db->query("UPDATE kehadiran_dosen SET keterangan = '$data[keterangan]', last_updated = '$this->now' WHERE id_dosen = '$data[id_dosen]'");
+    }
 
     public function update_tidak_hadir($data)
     {

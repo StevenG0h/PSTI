@@ -10,7 +10,7 @@
 
 <!-- Start Team Area -->
 <section class="team-page-area bg-color ptb-100">
-    <div class="container">
+    <div class="container-lg">
         <!-- <div class="section-title">
             <h2>Meet The Team</h2>
         </div> -->

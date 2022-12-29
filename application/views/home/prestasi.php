@@ -23,28 +23,27 @@
                 <div class="col-lg-4 ">
                             <div class="single-blog ">
                                 
-                                <a href="<?= base_url('home/prestasi_detail/'.$a['id_artikel']) ?>">
+                                <a class="blog-image" href="<?= base_url('home/prestasi_detail/'.$a['id_artikel']) ?>">
                                     <img src="<?= base_url('uploads/artikel/' . $a['gambar_artikel']) ?>" alt="Image">
                                 </a>
         
-                                <div class="blog-content">
-                                    <ul>
-                                        <li>
-                                            <i class="flaticon-user"></i>
-                                            <a href="#">Admin</a>
-                                        </li>
-        
-                                        <li>
-                                            <i class="flaticon-calendar"></i>
-                                            <?= $a['tanggal_artikel'] ?>
-                                        </li>
-                                    </ul>
+                                <div class="">
+                                <ul class="d-flex flex-row gap-3 my-2">
+                                <li>
+                                    <i class="flaticon-user"></i>
+                                    <a href="#">Admin</a>
+                                </li>
+                                <li>
+                                    <i class="flaticon-calendar"></i>
+                                    <?= $a['tanggal_artikel'] ?>
+                                </li>
+                            </ul>
         
                                     <a href="<?= base_url('home/prestasi_detail/'.$a['id_artikel']) ?>">
-                                        <h3><?= $a['judul_artikel'] ?></h3>
+                                        <h3><?= substr(strip_tags($a['judul_artikel']), 0, 50) ?>...</h3>
                                     </a>
         
-                                    <p><?= substr(strip_tags($a['isi_artikel']), 0, 200) ?>...</p>
+                                    <p><?= substr(strip_tags($a['isi_artikel']), 0, 100) ?>...</p>
                                 
                                     <a href="<?= base_url('home/prestasi_detail/'.$a['id_artikel']) ?>" class="read-more">
                                     <button class="btn btn-dark btn-sm">Selengkapnya...</button> 
@@ -67,9 +66,9 @@
 					<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
 						data-bs-parent="#accordionExample">
 						<ul class="list-group">
-                            <?php foreach($artikel as $a): ?>
-                            <a href="<?= base_url("home/berita_detail/".$a['id_artikel']) ?>">
-                                <li class="list-group-item"><?= $a['judul_artikel'] ?></li>
+                            <?php foreach($artikels as $a): ?>
+                            <a href="<?= base_url("home/berita/".$a) ?>">
+                                <li class="list-group-item"><?= $a ?></li>
                             </a>
                             <?php endforeach; ?>
 						</ul>
@@ -86,8 +85,8 @@
 						data-bs-parent="#accordionExample">
 						<ul class="list-group">
                             <?php foreach($prestasi as $p): ?>
-                            <a href="<?= base_url("home/berita_detail/".$p['id_artikel']) ?>">
-                                <li class="list-group-item"><?= $p['judul_artikel'] ?></li>
+                            <a href="<?= base_url("home/berita/".$p) ?>">
+                                <li class="list-group-item"><?= $p ?></li>
                             </a>
                             <?php endforeach; ?>
 						</ul>
@@ -104,8 +103,8 @@
 						data-bs-parent="#accordionExample">
 						<ul class="list-group">
                             <?php foreach($all_kurikulum as $kur): ?>
-                            <a href="<?= base_url("home/kurikulum/".$kur['id_kurikulum']) ?>">
-                                <li class="list-group-item"><?= $kur['kurikulum'] ?></li>
+                            <a href="<?= base_url("home/kurikulum/".$kur->id_kurikulum) ?>">
+                                <li class="list-group-item"><?= $kur->kurikulum ?></li>
                             </a>
                             <?php endforeach; ?>
 						</ul>

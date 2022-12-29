@@ -62,7 +62,8 @@ class Auth extends CI_Controller
             $profil = $this->db->get_where('dosen',['email_dosen'=> $email])->row_array();
             $dsn = $this->db->get_where('login_dosen', ['id_dosen' => $profil['id_dosen']])->row_array();
             if ($profil) {
-                if ($password == $dsn['password']) {
+                #if ($password == $dsn['password']) {
+                if(password_verify($password, $dsn['password'])){
                     $data = [
                         'id'=>$profil['id_dosen'],
                         'username'  => $profil['nama_dosen'],
@@ -85,7 +86,7 @@ class Auth extends CI_Controller
             }
         }
     }
-
+    
     public function keluar()
     {
         $this->session->unset_userdata('username');

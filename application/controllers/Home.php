@@ -16,20 +16,49 @@ class Home extends CI_Controller
 
     public function index()
     {
-        $data['artikel'] = $this->ArtikelModel->get_new_artikel();
+        $data['prestasi'] = $this->ArtikelModel->get_new_prestasi();
+        $data['berita'] = $this->ArtikelModel->get_new_berita();
         $data['slider'] = $this->ArtikelModel->get_gambar_slider();
         // die(var_dump(uniqid()));
         $data['kurikulum'] = $this->KurikulumModel->get_all_kurikulum_nama_id();
+        $k_aktif = $this->KurikulumModel->get_kurikulum_aktif();
+        $data['profil'] = $this->KurikulumModel->get_all_active_pl();
         $this->load->view('templates/home_header');
         $this->load->view('templates/home_navbar',$data);
         $this->load->view('home/index');
         $this->load->view('templates/home_footer');
     }
 
-    public function berita()
+    public function berita($request = null)
     {
-        $data['artikel'] = $this->ArtikelModel->get_all();
+        if($request != null){
+            $data['artikel'] = $this->ArtikelModel->get_all_artikel_by_year($request);
+        }else{
+            $data['artikel'] = $this->ArtikelModel->get_all_artikel();
+        }
         $data['kurikulum'] = $this->KurikulumModel->get_all_kurikulum_nama_id();
+        $data['all_kurikulum'] = $this->KurikulumModel->get_all();
+        
+        $years = $this->ArtikelModel->get_all_artikel();
+        $temp_year = null;
+        $articleYear = [];
+        foreach($years as $year){
+            if(date('Y',strtotime($year['tanggal_artikel']))  != $temp_year){
+                array_push($articleYear, date('Y',strtotime($year['tanggal_artikel'])));
+                $temp_year = date('Y',strtotime($year['tanggal_artikel']));
+            }
+        }
+        $p_years = $this->ArtikelModel->get_all_prestasi();
+        $temp_p_year = null;
+        $prestasi_year = [];
+        foreach($p_years as $p_year){
+            if(date('Y',strtotime($p_year['tanggal_artikel']))  != $temp_p_year){
+                array_push($prestasi_year, date('Y',strtotime($p_year['tanggal_artikel'])));
+                $temp_p_year = date('Y',strtotime($p_year['tanggal_artikel']));
+            }
+        }
+        $data['artikels'] = $articleYear;
+        $data['prestasi'] = $prestasi_year;
         $this->load->view('templates/home_header');
         $this->load->view('templates/home_navbar',$data);
         $this->load->view('home/berita', $data);
@@ -42,8 +71,27 @@ class Home extends CI_Controller
         $data['heading'] = 'Detail Berita';
         $data['kurikulum'] = $this->KurikulumModel->get_all_kurikulum_nama_id();
         $data['all_kurikulum'] = $this->KurikulumModel->get_all();
-        $data['prestasi'] = $this->ArtikelModel->get_all_prestasi();
-        $data['artikel'] = $this->ArtikelModel->get_all_artikel();
+        
+        $years = $this->ArtikelModel->get_all_artikel();
+        $temp_year = null;
+        $articleYear = [];
+        foreach($years as $year){
+            if(date('Y',strtotime($year['tanggal_artikel']))  != $temp_year){
+                array_push($articleYear, date('Y',strtotime($year['tanggal_artikel'])));
+                $temp_year = date('Y',strtotime($year['tanggal_artikel']));
+            }
+        }
+        $p_years = $this->ArtikelModel->get_all_prestasi();
+        $temp_p_year = null;
+        $prestasi_year = [];
+        foreach($p_years as $p_year){
+            if(date('Y',strtotime($p_year['tanggal_artikel']))  != $temp_p_year){
+                array_push($prestasi_year, date('Y',strtotime($p_year['tanggal_artikel'])));
+                $temp_p_year = date('Y',strtotime($p_year['tanggal_artikel']));
+            }
+        }
+        $data['artikel'] = $articleYear;
+        $data['prestasi'] = $prestasi_year;
         $this->load->view('templates/home_header');
         $this->load->view('templates/home_navbar',$data);
         $this->load->view('home/artikel_detail', $data);
@@ -64,11 +112,28 @@ class Home extends CI_Controller
         $data['profil_lulusan'] = $this->KurikulumModel->get_all_pl_by_kur($id);
         $data['capaian_pembelajaran'] = $this->KurikulumModel->get_all_cp_by_kur($id);
         $data['kurikulum_aktif'] = $this->KurikulumModel->get_kurikulum_by_id($id);
-        $data['semester'] = $this->KurikulumModel->get_semester_by_kurikulum_aktif();
-        $data['kurikulum_tidak_aktif'] = $this->KurikulumModel->get_kurikulum_tidak_aktif();
+        $data['semester'] = $this->KurikulumModel->get_semester_by_id($id);
         $data['all_kurikulum'] = $this->KurikulumModel->get_all();
-        $data['prestasi'] = $this->ArtikelModel->get_all_prestasi();
-        $data['artikel'] = $this->ArtikelModel->get_all_artikel();
+        $years = $this->ArtikelModel->get_all_artikel();
+        $temp_year = null;
+        $articleYear = [];
+        foreach($years as $year){
+            if(date('Y',strtotime($year['tanggal_artikel']))  != $temp_year){
+                array_push($articleYear, date('Y',strtotime($year['tanggal_artikel'])));
+                $temp_year = date('Y',strtotime($year['tanggal_artikel']));
+            }
+        }
+        $p_years = $this->ArtikelModel->get_all_prestasi();
+        $temp_p_year = null;
+        $prestasi_year = [];
+        foreach($p_years as $p_year){
+            if(date('Y',strtotime($p_year['tanggal_artikel']))  != $temp_p_year){
+                array_push($prestasi_year, date('Y',strtotime($p_year['tanggal_artikel'])));
+                $temp_p_year = date('Y',strtotime($p_year['tanggal_artikel']));
+            }
+        }
+        $data['artikels'] = $articleYear;
+        $data['prestasi'] = $prestasi_year;
         $data['kurikulum'] = $this->KurikulumModel->get_all_kurikulum_nama_id();
         $this->load->view('templates/home_header');
         $this->load->view('templates/home_navbar',$data);
@@ -87,13 +152,37 @@ class Home extends CI_Controller
         $this->load->view('templates/home_footer');
     }
 
-    public function prestasi()
+    public function prestasi($request = null)
     {
-        $data['artikel'] = $this->ArtikelModel->get_all_prestasi();
+
+        if($request != null){
+            $data['artikel'] = $this->ArtikelModel->get_all_prestasi_by_year($request);
+        }else{
+            $data['artikel'] = $this->ArtikelModel->get_all_prestasi();
+        }
         $data['kurikulum'] = $this->KurikulumModel->get_all_kurikulum_nama_id();
         $data['all_kurikulum'] = $this->KurikulumModel->get_all();
-        $data['prestasi'] = $this->ArtikelModel->get_all_prestasi();
-        $data['artikels'] = $this->ArtikelModel->get_all_artikel();
+        
+        $years = $this->ArtikelModel->get_all_artikel();
+        $temp_year = null;
+        $articleYear = [];
+        foreach($years as $year){
+            if(date('Y',strtotime($year['tanggal_artikel']))  != $temp_year){
+                array_push($articleYear, date('Y',strtotime($year['tanggal_artikel'])));
+                $temp_year = date('Y',strtotime($year['tanggal_artikel']));
+            }
+        }
+        $p_years = $this->ArtikelModel->get_all_prestasi();
+        $temp_p_year = null;
+        $prestasi_year = [];
+        foreach($p_years as $p_year){
+            if(date('Y',strtotime($p_year['tanggal_artikel']))  != $temp_p_year){
+                array_push($prestasi_year, date('Y',strtotime($p_year['tanggal_artikel'])));
+                $temp_p_year = date('Y',strtotime($p_year['tanggal_artikel']));
+            }
+        }
+        $data['artikels'] = $articleYear;
+        $data['prestasi'] = $prestasi_year;
         $this->load->view('templates/home_header');
         $this->load->view('templates/home_navbar',$data);
         $this->load->view('home/prestasi', $data);
@@ -105,6 +194,28 @@ class Home extends CI_Controller
         $data['artikel_detail'] = $this->ArtikelModel->get_by_id($id);
         $data['heading'] = 'Detail Prestasi';
         $data['kurikulum'] = $this->KurikulumModel->get_all_kurikulum_nama_id();
+        $data['all_kurikulum'] = $this->KurikulumModel->get_all();
+        
+        $years = $this->ArtikelModel->get_all_artikel();
+        $temp_year = null;
+        $articleYear = [];
+        foreach($years as $year){
+            if(date('Y',strtotime($year['tanggal_artikel']))  != $temp_year){
+                array_push($articleYear, date('Y',strtotime($year['tanggal_artikel'])));
+                $temp_year = date('Y',strtotime($year['tanggal_artikel']));
+            }
+        }
+        $p_years = $this->ArtikelModel->get_all_prestasi();
+        $temp_p_year = null;
+        $prestasi_year = [];
+        foreach($p_years as $p_year){
+            if(date('Y',strtotime($p_year['tanggal_artikel']))  != $temp_p_year){
+                array_push($prestasi_year, date('Y',strtotime($p_year['tanggal_artikel'])));
+                $temp_p_year = date('Y',strtotime($p_year['tanggal_artikel']));
+            }
+        }
+        $data['artikels'] = $articleYear;
+        $data['prestasi'] = $prestasi_year;
         $this->load->view('templates/home_header');
         $this->load->view('templates/home_navbar',$data);
         $this->load->view('home/artikel_detail', $data);

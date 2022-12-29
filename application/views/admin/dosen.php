@@ -22,6 +22,9 @@
                             <th>Email</th>
                             <th>Kompetensi</th>
                             <th>Mata Kuliah</th>
+                            <th>Jabatan Fungsional</th>
+                            <th>Pangkat</th>
+                            <th>Sertifikat Pendidik</th>
                             <th>Gambar</th>
                             <th style="width:8% ;">Aksi</th>
                         </tr>
@@ -34,6 +37,9 @@
                             <th>Email</th>
                             <th>Kompetensi</th>
                             <th>Mata Kuliah</th>
+                            <th>Jabatan Fungsional</th>
+                            <th>Pangkat</th>
+                            <th>Sertifikat Pendidik</th>
                             <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
@@ -49,6 +55,9 @@
                                 <td><?= $value->email_dosen ?></td>
                                 <td><?= $value->kompetensi_dosen ?></td>
                                 <td><?= $value->makul_dosen ?></td>
+                                <td><?= $value->jabatan_fungsional ?></td>
+                                <td><?= $value->pangkat ?></td>
+                                <td><?= $value->sertifikat_pendidik ?></td>
                                 <td><img src="<?= base_url('uploads/dosen/'.$value->gambar_dosen) ?>" style="width:60%;height:stretch;"></td>
                                 <td>
                                     <a href="" class="btn btn-sm btn-success" data-toggle="modal" data-target="#ubahDosenModal<?= $value->id_dosen ?>"><i class="fas fa-fw fa-pen"></i></a>
@@ -86,6 +95,15 @@
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <textarea type="text" class="form-control" name="makul_dosen" placeholder="Mata Kuliah Dosen"><?= $value->makul_dosen ?></textarea>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <textarea type="text" class="form-control" name="jabatan_fungsional" placeholder="Jabatan Fungsional"><?= $value->jabatan_fungsional ?></textarea>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <select name="sertifikat_pendidik" id="" class="form-control">
+                                                        <option value="Sudah Tersertifikasi" <?php if($value->sertifikat_pendidik == "Sudah Tersertifikasi"){echo "selected";} ?>>Sudah Tersertifikasi</option>
+                                                        <option value="Belum Tersertifikasi" <?php if($value->sertifikat_pendidik == "Belum Tersertifikasi"){echo "selected";} ?>>Belum Tersertifikasi</option>
+                                                    </select>
                                                 </div>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="image" name="gambar_dosen" placeholder="Gambar Dosen">
@@ -142,6 +160,15 @@
                     <div class="form-group mb-3">
                         <textarea class="form-control" name="makul_dosen" placeholder="Mata Kuliah Dosen" required></textarea>
                     </div>
+                    <div class="form-group mb-3">
+                        <textarea class="form-control" name="jabatan_fungsional" placeholder="Jabatan Fungsional Dosen" required></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+						<select name="sertifikat_pendidik" id="" class="form-control">
+							<option value="Sudah Tersertifikasi" >Sudah Tersertifikasi</option>
+							<option value="Belum Tersertifikasi" >Belum Tersertifikasi</option>
+						</select>
+					</div>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" name="gambar_dosen" placeholder="Gambar Dosen">
                         <label for="image" class="custom-file-label">Gambar Dosen</label>

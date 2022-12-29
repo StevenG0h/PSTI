@@ -74,8 +74,8 @@
 						data-bs-parent="#accordionExample">
 						<ul class="list-group">
                             <?php foreach($artikel as $a): ?>
-                            <a href="<?= base_url("home/berita_detail/".$a['id_artikel']) ?>">
-                                <li class="list-group-item"><?= $a['judul_artikel'] ?></li>
+                            <a href="<?= base_url("home/berita/".$a) ?>">
+                                <li class="list-group-item"><?= $a ?></li>
                             </a>
                             <?php endforeach; ?>
 						</ul>
@@ -92,8 +92,8 @@
 						data-bs-parent="#accordionExample">
 						<ul class="list-group">
                             <?php foreach($prestasi as $p): ?>
-                            <a href="<?= base_url("home/berita_detail/".$p['id_artikel']) ?>">
-                                <li class="list-group-item"><?= $p['judul_artikel'] ?></li>
+                            <a href="<?= base_url("home/berita/".$p) ?>">
+                                <li class="list-group-item"><?= $p ?></li>
                             </a>
                             <?php endforeach; ?>
 						</ul>
@@ -109,9 +109,9 @@
 					<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
 						data-bs-parent="#accordionExample">
 						<ul class="list-group">
-                            <?php foreach($all_kurikulum as $kur): ?>
-                            <a href="<?= base_url("home/kurikulum/".$kur['id_kurikulum']) ?>">
-                                <li class="list-group-item"><?= $kur['kurikulum'] ?></li>
+                        <?php foreach($all_kurikulum as $kur): ?>
+                            <a href="<?= base_url("home/kurikulum/".$kur->id_kurikulum) ?>">
+                                <li class="list-group-item"><?= $kur->kurikulum ?></li>
                             </a>
                             <?php endforeach; ?>
 						</ul>

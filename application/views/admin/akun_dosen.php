@@ -68,6 +68,7 @@
                                         </div>
                                         <form action="<?= base_url('admin/ubah_akun') ?>" method="POST" enctype="multipart/form-data">
                                             <div class="modal-body">
+                                            <input type="hidden" name="id_dosen" value="<?= $value->id_dosen ?>">
                                                 <div class="form-group mb-3">
                                                     <input type="hidden" name="id_login_dosen" value="<?= $value->id_login_dosen ?>">
                                                     <select class="form-control" name="id_dosen" id="" required>
@@ -78,13 +79,23 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group mb-3">
-                                                    <input type="text" class="form-control" name="password" placeholder="Password" value="<?= $value->password ?>">
-                                                </div>
-                                                <div class="form-group mb-3">
                                                     <select class="form-control" name="level" id="" required>
                                                         <option value="<?=$value->level?>"><?=$level?></option>
                                                         <option value="<?=$level_value?>"><?=$level_name?></option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-sm btn-primary">Ubah</button>
+                                            </div>
+                                        </form>
+                                        <h4 class="pl-4 mb-1">Ubah Password</h4>
+                                        <form action="<?= base_url('admin/ubah_pwd') ?>" method="POST" enctype="multipart/form-data">
+                                            <div class="modal-body">
+                                            <input type="hidden" name="id_login_dosen" value="<?= $value->id_login_dosen ?>">
+                                                <div class="form-group mb-3">
+                                                    <input type="Password" name="password" placeholder="Password" value="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
